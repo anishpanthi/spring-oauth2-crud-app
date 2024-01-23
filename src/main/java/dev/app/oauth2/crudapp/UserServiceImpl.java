@@ -1,8 +1,9 @@
 package dev.app.oauth2.crudapp;
 
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author Anish Panthi
@@ -11,15 +12,20 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-  private final UserRepository userRepository;
+    private final UserRepository userRepository;
 
-  @Override
-  public List<User> findAll() {
-    return userRepository.findAll();
-  }
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
 
-  @Override
-  public void save(User user) {
-    userRepository.save(user);
-  }
+    @Override
+    public void save(User user) {
+        userRepository.save(user);
+    }
+
+    @Override
+    public User findById(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+    }
 }

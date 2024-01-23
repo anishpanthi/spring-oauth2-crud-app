@@ -1,19 +1,15 @@
 package dev.app.oauth2.crudapp;
 
-import java.util.List;
-import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.jdbc.core.simple.JdbcClient;
 
 @SpringBootApplication
-public class SpringOAuth2AndCrudApplication {
+public class SecuredCrudApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(SpringOAuth2AndCrudApplication.class, args);
+    SpringApplication.run(SecuredCrudApplication.class, args);
   }
 
   @Bean
