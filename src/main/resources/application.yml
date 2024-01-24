@@ -11,3 +11,16 @@ spring:
   sql:
     init:
       mode: always
+  security:
+    oauth2:
+      client:
+        provider:
+          azure:
+            issuer-uri: https://login.microsoftonline.com/1b286c40-c2fd-46d5-a553-b6502b89f42d/v2.0     # https://login.microsoftonline.com/{tenantId}/v2.0
+        registration:
+          azure:
+            provider: azure
+            client-id: 9e8e2c62-2fd4-4d3d-9d9e-9ac43cd9e485      # Application (client) ID
+            client-secret: Nqc8Q~DVsVmuLNK.n~6XxpBgNCvcozGoldxL~aS.  # Client secret - For-Angular-UI
+            scope: openid, profile, email, offline_access
+            redirect-uri: http://localhost:4200/login/oauth2/code/azuread
