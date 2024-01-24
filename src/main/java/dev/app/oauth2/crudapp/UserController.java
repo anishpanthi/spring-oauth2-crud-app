@@ -1,10 +1,9 @@
 package dev.app.oauth2.crudapp;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * @author Anish Panthi
@@ -22,7 +21,7 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<Void> saveUser(User user) {
+    public ResponseEntity<Void> saveUser(@RequestBody User user) {
         userService.save(user);
         return ResponseEntity.ok().build();
     }
@@ -32,9 +31,15 @@ public class UserController {
         return ResponseEntity.ok(userService.findById(id));
     }
 
-    @PutMapping("/users")
-    public ResponseEntity<Void> updateUser(User user) {
+    @PutMapping("/users/{id}")
+    public ResponseEntity<Void> updateUser(@RequestBody User user) {
         userService.save(user);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userService.deleteById(id);
         return ResponseEntity.ok().build();
     }
 }
