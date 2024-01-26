@@ -4,19 +4,22 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-public class CookieCsrfFilter extends OncePerRequestFilter {
+import java.io.IOException;
+
 /**
-*
- * @param request
- * @param response
- * @param filterChain
- * @throws ServletException
- * @throws IOException
-*/
+ * @author Anish Panthi
+ */
+public class CookieCsrfFilter extends OncePerRequestFilter {
+    /**
+     * @param request     - HttpServletRequest
+     * @param response    - HttpServletResponse
+     * @param filterChain - FilterChain
+     * @throws ServletException - ServletException
+     * @throws IOException      - IOException
+     */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 

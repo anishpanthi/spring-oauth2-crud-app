@@ -13,12 +13,12 @@ import org.springframework.data.relational.core.mapping.Table;
 @Table("OAUTH_USER")
 public record User(
 
-    @Id
-    Long id,
-    String name,
-    String email,
-    String password,
-    Role role
+        @Id
+        Long id,
+        String name,
+        String email,
+        String password,
+        Role role
 ) {
 
 }
