@@ -15,12 +15,12 @@ spring:
     oauth2:
       client:
         provider:
-          azure:
-            issuer-uri: https://login.microsoftonline.com/{tenantId}/v2.0
+          azuread:
+            issuer-uri: https://login.microsoftonline.com/1b286c40-c2fd-46d5-a553-b6502b89f42d/v2.0
         registration:
-          azure:
-            provider: azure
-            client-id: '***'      # Application (client) ID
-            client-secret: '***'  # Client secret - For-Angular-UI
+          azuread:
+            provider: azuread
+            client-id:       # Application (client) ID
+            client-secret:   # Client secret - For-Angular-UI
             scope: openid, profile, email, offline_access
             redirect-uri: http://localhost:4200/login/oauth2/code/azuread
