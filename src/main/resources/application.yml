@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:my_ouath2_db
+    url: jdbc:h2:mem:my_oauth2_db
     username: sa
     password:
     driver-class-name: org.h2.Driver
@@ -20,7 +20,7 @@ spring:
         registration:
           azuread:
             provider: azuread
-            client-id:       # Application (client) ID
-            client-secret:   # Client secret - For-Angular-UI
+            client-id:
+            client-secret:
             scope: openid, profile, email, offline_access
-            redirect-uri: http://localhost:4200/login/oauth2/code/azuread
+            redirect-uri: http://localhost:4200/home
