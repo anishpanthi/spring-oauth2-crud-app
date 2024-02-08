@@ -13,19 +13,20 @@ import java.io.IOException;
  * @author Anish Panthi
  */
 public class CookieCsrfFilter extends OncePerRequestFilter {
-    /**
-     * @param request     - HttpServletRequest
-     * @param response    - HttpServletResponse
-     * @param filterChain - FilterChain
-     * @throws ServletException - ServletException
-     * @throws IOException      - IOException
-     */
-    @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+  /**
+   * @param request - HttpServletRequest
+   * @param response - HttpServletResponse
+   * @param filterChain - FilterChain
+   * @throws ServletException - ServletException
+   * @throws IOException - IOException
+   */
+  @Override
+  protected void doFilterInternal(
+      HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+      throws ServletException, IOException {
 
-        CsrfToken csrfToken = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
-        response.setHeader(csrfToken.getHeaderName(), csrfToken.getToken());
-        filterChain.doFilter(request, response);
-
-    }
+    CsrfToken csrfToken = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
+    response.setHeader(csrfToken.getHeaderName(), csrfToken.getToken());
+    filterChain.doFilter(request, response);
+  }
 }

@@ -7,6 +7,4 @@ import org.springframework.stereotype.Repository;
  * @author Anish Panthi
  */
 @Repository
-public interface UserRepository extends ListCrudRepository<User, Long> {
-
-}
+public interface UserRepository extends ListCrudRepository<User, Long> {}

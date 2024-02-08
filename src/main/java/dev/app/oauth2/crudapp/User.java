@@ -11,14 +11,4 @@ import org.springframework.data.relational.core.mapping.Table;
  * @author Anish Panthi
  */
 @Table("OAUTH_USER")
-public record User(
-
-        @Id
-        Long id,
-        String name,
-        String email,
-        String password,
-        Role role
-) {
-
-}
+public record User(@Id Long id, String name, String email, String password, Role role) {}
