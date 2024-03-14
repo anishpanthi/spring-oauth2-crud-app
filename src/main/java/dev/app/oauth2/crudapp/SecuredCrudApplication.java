@@ -17,7 +17,7 @@ public class SecuredCrudApplication {
     return args -> {
       userService.save(
           new User(null, "Anish", "anish@panthi.com", "anish123", new Role(null, "ADMIN")));
-      userService.save(new User(null, "Alan", "alan@alan.com", "alan123", new Role(null, "USER")));
+      userService.save(new User(null, "Aayan", "aayan@aayan.com", "aayan123", new Role(null, "USER")));
       userService.findAll().forEach(System.out::println);
     };
   }
