@@ -17,22 +17,16 @@ spring:
         provider:
           azuread:
             issuer-uri: https://login.microsoftonline.com/1b286c40-c2fd-46d5-a553-b6502b89f42d/v2.0
-#          azure-b2c:
-#            authorization-uri: https://pamiadu.b2clogin.com/pamiadu.onmicrosoft.com/b2c_1_pamiadu/oauth2/v2.0/authorize
-#            jwk-set-uri: https://pamiadu.b2clogin.com/pamiadu.onmicrosoft.com/b2c_1_pamiadu/discovery/v2.0/keys
-#            token-uri: https://pamiadu.b2clogin.com/pamiadu.onmicrosoft.com/b2c_1_pamiadu/oauth2/v2.0/token
         registration:
-#          azure-b2c:
-#            provider: azure-b2c
-#            client-id: ad76a4d9-69e6-4e5f-8bd3-d85f0e05927e
-#            client-secret: QGn8Q~hzUEv7mL_MFTNaELc87Pzk-EqEjNTvua3t
-#            scope: openid
-#            redirect-uri: http://localhost:4200/home
-#            client-name: Microsoft B2C Login
-#            authorization-grant-type: authorization_code
           azuread:
             provider: azuread
             client-id: 9e8e2c62-2fd4-4d3d-9d9e-9ac43cd9e485
             client-secret: UN58Q~ztUZ4.9RffCuMzYd.3DK5jFNChtYd2Tb_a
             scope: openid, profile, email, offline_access
-            redirect-uri: http://localhost:8080/login/oauth2/code/azuread
+            redirect-uri: http://localhost:4200/login/oauth2/code/azuread
+      resourceserver:
+        jwt:
+          issuer-uri: https://login.microsoftonline.com/1b286c40-c2fd-46d5-a553-b6502b89f42d/v2.0
+logging:
+  level:
+    org.springframework.security: debug
