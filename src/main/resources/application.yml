@@ -20,8 +20,8 @@ spring:
         registration:
           azuread:
             provider: azuread
-            client-id: 9e8e2c62-2fd4-4d3d-9d9e-9ac43cd9e485
-            client-secret: UN58Q~ztUZ4.9RffCuMzYd.3DK5jFNChtYd2Tb_a
+            client-id:
+            client-secret:
             scope: openid, profile, email, offline_access
             redirect-uri: http://localhost:4200/login/oauth2/code/azuread
       resourceserver:
