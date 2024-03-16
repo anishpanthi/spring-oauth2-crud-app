@@ -1,19 +1,17 @@
-DROP TABLE IF EXISTS OAUTH_USER;
-DROP TABLE IF EXISTS OAUTH_ROLE;
-
-CREATE TABLE OAUTH_USER
+CREATE TABLE IF NOT EXISTS USERS
 (
-    ID       BIGINT       NOT NULL AUTO_INCREMENT,
-    NAME     VARCHAR(255) NOT NULL,
-    EMAIL    VARCHAR(255) NOT NULL,
-    PASSWORD VARCHAR(255) NOT NULL,
-    PRIMARY KEY (ID)
+    ID       serial primary key,
+    NAME     varchar(100) NOT NULL,
+    EMAIL    varchar(100) NOT NULL
 );
 
-CREATE TABLE OAUTH_ROLE
-(
-    ID         BIGINT       NOT NULL AUTO_INCREMENT,
-    ROLE       VARCHAR(255) NOT NULL,
-    OAUTH_USER BIGINT       NOT NULL REFERENCES OAUTH_USER (ID),
-    PRIMARY KEY (ID)
-);
+-- insert into USERS (NAME, EMAIL) values ('Anish','anish@whoisanish.com');
+-- insert into USERS (NAME, EMAIL) values ('John','john@iamjohn.com');
+-- insert into USERS (NAME, EMAIL) values ('Pamiadu','pami@adu.com');
+-- insert into USERS (NAME, EMAIL) values ('Jake','jake@gmail.com');
+-- insert into USERS (NAME, EMAIL) values ('John','john@okta.com');
+-- insert into USERS (NAME, EMAIL) values ('Robert','robert@gmail.com');
+-- insert into USERS (NAME, EMAIL) values ('Okta Hero','oktahero@okta.com');
+-- insert into USERS (NAME, EMAIL) values ('Hello','hello@world.com');
+-- insert into USERS (NAME, EMAIL) values ('World','world@hello.com');
+-- insert into USERS (NAME, EMAIL) values ('Gmail','gmail@gmail.com');
