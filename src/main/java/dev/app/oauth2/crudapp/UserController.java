@@ -1,6 +1,7 @@
 package dev.app.oauth2.crudapp;
 
 import jakarta.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Map;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -9,7 +10,11 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.core.user.OAuth2User;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Anish Panthi
@@ -20,10 +25,15 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api")
 public class UserController {
+
   private final ClientRegistration clientRegistration;
 
-  public UserController(ClientRegistrationRepository clientRegistrationRepository) {
+  private final UserRepository userRepository;
+
+  public UserController(ClientRegistrationRepository clientRegistrationRepository,
+      UserRepository userRepository) {
     this.clientRegistration = clientRegistrationRepository.findByRegistrationId("azuread");
+    this.userRepository = userRepository;
   }
 
   @GetMapping("/user")
@@ -49,22 +59,7 @@ public class UserController {
   }
 
   @GetMapping("/all/users")
-  public ResponseEntity<String> getAllUsers() {
-    var users =
-        """
-          [
-            {
-                "id": 1,
-                "name": "Anish",
-                "email": "anish@panthi.com"
-            },
-            {
-                "id": 2,
-                "name": "John",
-                "email": "John@whoisjohn.dev"
-            }
-          ]
-      """;
-    return ResponseEntity.ok().body(users);
+  public ResponseEntity<List<User>> getAllUsers() {
+    return ResponseEntity.ok().body(userRepository.findAll());
   }
 }
