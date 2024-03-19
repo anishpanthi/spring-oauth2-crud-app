@@ -21,8 +21,8 @@ spring:
         profile:
           tenant-id: 1b286c40-c2fd-46d5-a553-b6502b89f42d
         credential:
-          client-secret: UN58Q~ztUZ4.9RffCuMzYd.3DK5jFNChtYd2Tb_a
-          client-id: 9e8e2c62-2fd4-4d3d-9d9e-9ac43cd9e485
+          client-secret:
+          client-id:
         enabled: true
 #logging:
 #  level:
