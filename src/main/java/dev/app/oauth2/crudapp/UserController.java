@@ -3,10 +3,14 @@ package dev.app.oauth2.crudapp;
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
+import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -24,15 +28,16 @@ import org.springframework.web.bind.annotation.RestController;
     maxAge = 3600)
 @RestController
 @RequestMapping("/api")
+@Log4j2
 public class UserController {
 
   private final ClientRegistration clientRegistration;
 
   private final UserRepository userRepository;
 
-  public UserController(ClientRegistrationRepository clientRegistrationRepository,
-      UserRepository userRepository) {
-    this.clientRegistration = clientRegistrationRepository.findByRegistrationId("azuread");
+  public UserController(
+      ClientRegistrationRepository clientRegistrationRepository, UserRepository userRepository) {
+    this.clientRegistration = clientRegistrationRepository.findByRegistrationId("azure");
     this.userRepository = userRepository;
   }
 
@@ -59,7 +64,14 @@ public class UserController {
   }
 
   @GetMapping("/all/users")
-  public ResponseEntity<List<User>> getAllUsers() {
+  public ResponseEntity<List<User>> getAllUsers(
+      @RegisteredOAuth2AuthorizedClient("azure") OAuth2AuthorizedClient client) {
+    log.info("Access Token: {}", client.getAccessToken().getTokenValue());
+    log.info(
+        "Refresh Token: {}",
+        client.getRefreshToken() == null
+            ? "Refresh token not received"
+            : client.getRefreshToken().getTokenValue());
     return ResponseEntity.ok().body(userRepository.findAll());
   }
 }

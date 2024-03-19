@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgres://localhost:5431/postgres
+    url: jdbc:postgres://localhost:5432/postgres
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
@@ -9,23 +9,21 @@ spring:
       mode: always
   security:
     oauth2:
-      client:
-        provider:
-          azuread:
-            issuer-uri: https://login.microsoftonline.com/1b286c40-c2fd-46d5-a553-b6502b89f42d/v2.0
-        registration:
-          azuread:
-            provider: azuread
-            client-id:
-            client-secret:
-            scope: openid, profile, email, offline_access
-            redirect-uri: http://localhost:4200/login/oauth2/code/azuread
       resourceserver:
         jwt:
           issuer-uri: https://login.microsoftonline.com/1b286c40-c2fd-46d5-a553-b6502b89f42d/v2.0
   threads:
     virtual:
       enabled: true
+  cloud:
+    azure:
+      active-directory:
+        profile:
+          tenant-id: 1b286c40-c2fd-46d5-a553-b6502b89f42d
+        credential:
+          client-secret: UN58Q~ztUZ4.9RffCuMzYd.3DK5jFNChtYd2Tb_a
+          client-id: 9e8e2c62-2fd4-4d3d-9d9e-9ac43cd9e485
+        enabled: true
 #logging:
 #  level:
 #    org.springframework.security: debug
