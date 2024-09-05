@@ -19,8 +19,8 @@ spring:
         registration:
           azure-ad:
             provider: azure-ad
-            client-id: 1b431cea-22f7-40f7-844d-b5031bc32e36
-            client-secret: BN58Q~B~5.cnvg~aUyqh0Y-.qskI7b_KZLmpYbrX
+            client-id:
+            client-secret:
             scope: openid, profile, email, offline_access
             authorization-grant-type: authorization_code
             #            redirect-uri: http://localhost:8080${spring.webflux.base-path}/login/oauth2/code/azure-ad
