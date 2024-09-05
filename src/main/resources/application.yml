@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgres://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
@@ -12,18 +12,23 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: https://login.microsoftonline.com/1b286c40-c2fd-46d5-a553-b6502b89f42d/v2.0
+      client:
+        provider:
+          azure-ad:
+            issuer-uri: https://login.microsoftonline.com/1b286c40-c2fd-46d5-a553-b6502b89f42d/v2.0
+        registration:
+          azure-ad:
+            provider: azure-ad
+            client-id: 1b431cea-22f7-40f7-844d-b5031bc32e36
+            client-secret: BN58Q~B~5.cnvg~aUyqh0Y-.qskI7b_KZLmpYbrX
+            scope: openid, profile, email, offline_access
+            authorization-grant-type: authorization_code
+            #            redirect-uri: http://localhost:8080${spring.webflux.base-path}/login/oauth2/code/azure-ad
+#            redirect-uri: http://localhost:4200/#/dashboard
   threads:
     virtual:
       enabled: true
-  cloud:
-    azure:
-      active-directory:
-        profile:
-          tenant-id: 1b286c40-c2fd-46d5-a553-b6502b89f42d
-        credential:
-          client-secret:
-          client-id:
-        enabled: true
-#logging:
-#  level:
-#    org.springframework.security: debug
+
+logging:
+  level:
+    org.springframework.security.oauth2: debug

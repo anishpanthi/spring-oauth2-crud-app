@@ -11,11 +11,11 @@ import java.io.IOException;
 
 public class CookieCsrfFilter extends OncePerRequestFilter {
   /**
-   * @param request
-   * @param response
-   * @param filterChain
-   * @throws ServletException
-   * @throws IOException
+   * @param request - HttpServletRequest
+   * @param response - HttpServletResponse
+   * @param filterChain - FilterChain
+   * @throws ServletException - ServletException
+   * @throws IOException - IOException
    */
   @Override
   protected void doFilterInternal(

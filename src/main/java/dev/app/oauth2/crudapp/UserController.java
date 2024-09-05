@@ -4,15 +4,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
-import org.springframework.security.oauth2.client.registration.ClientRegistration;
-import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,13 +27,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Log4j2
 public class UserController {
 
-  private final ClientRegistration clientRegistration;
-
   private final UserRepository userRepository;
 
   public UserController(
-      ClientRegistrationRepository clientRegistrationRepository, UserRepository userRepository) {
-    this.clientRegistration = clientRegistrationRepository.findByRegistrationId("azure");
+      UserRepository userRepository) {
     this.userRepository = userRepository;
   }
 
@@ -53,9 +46,9 @@ public class UserController {
   @PostMapping("/logout")
   public ResponseEntity<?> logout(HttpServletRequest request) {
     // send logout URL to client so they can initiate logout
-    var issuerUri = clientRegistration.getProviderDetails().getIssuerUri();
-    var originUrl = request.getHeader(HttpHeaders.ORIGIN);
-    Object[] params = {issuerUri, clientRegistration.getClientId(), originUrl};
+    //    var issuerUri = clientRegistration.getProviderDetails().getIssuerUri();
+    //    var originUrl = request.getHeader(HttpHeaders.ORIGIN);
+    //    Object[] params = {issuerUri, clientRegistration.getClientId(), originUrl};
 
     var logoutUrl =
         "https://login.microsoftonline.com/1b286c40-c2fd-46d5-a553-b6502b89f42d/oauth2/v2.0/logout";
