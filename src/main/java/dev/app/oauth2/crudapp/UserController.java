@@ -58,7 +58,7 @@ public class UserController {
 
   @GetMapping("/all/users")
   public ResponseEntity<List<User>> getAllUsers(
-      @RegisteredOAuth2AuthorizedClient("azure") OAuth2AuthorizedClient client) {
+      @RegisteredOAuth2AuthorizedClient("azure-ad") OAuth2AuthorizedClient client) {
     log.info("Access Token: {}", client.getAccessToken().getTokenValue());
     log.info(
         "Refresh Token: {}",

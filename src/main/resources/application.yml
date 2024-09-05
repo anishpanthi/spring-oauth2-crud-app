@@ -23,8 +23,7 @@ spring:
             client-secret:
             scope: openid, profile, email, offline_access
             authorization-grant-type: authorization_code
-            #            redirect-uri: http://localhost:8080${spring.webflux.base-path}/login/oauth2/code/azure-ad
-#            redirect-uri: http://localhost:4200/#/dashboard
+            redirect-uri: http://localhost:8080/login/oauth2/code/azure-ad
   threads:
     virtual:
       enabled: true
